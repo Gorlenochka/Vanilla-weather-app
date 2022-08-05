@@ -19,13 +19,19 @@ function showTemp(response) {
     icon.setAttribute("alt", response.data.weather[0].description);
 }
 
-let city = "Kyiv";
-let searchCity = document.querySelector("#search-city");
-searchCity.innerHTML = `${city}`;
-let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(event) {
+  event.preventDefault();
+  let searchInputValue = document.querySelector("#search-a-city");
+  let searchCity = document.querySelector("#search-city");
+  searchCity.innerHTML = `${searchInputValue.value}`;
+  let city = `${searchInputValue.value}`;
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemp);
+}
 
-axios.get(apiUrl).then(showTemp);
+let searchForm = document.querySelector("#go");
+searchForm.addEventListener("click", search);
 
 //Date and time
 

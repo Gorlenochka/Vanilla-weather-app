@@ -37,6 +37,7 @@ h1 {
 
 .search-a-city {
   border: 2px solid #5a6275;
+  border-radius: 5px;
   font-size: 14px;
   height: 40px;
   width: 250px;
