@@ -1,7 +1,7 @@
 body {
   font-family: "Noto Sans", sans-serif;
   margin: 50px;
-}
+  }
 
 h1 {
   font-size: 42px;
@@ -168,4 +168,19 @@ tr {
 
 .image-weather-weekday {
   width: 40px;
+}
+
+.author {
+  margin-top: 20px;
+}
+
+.author a {
+  text-decoration: none;
+  color: #006ec5;
+  opacity: 50%;
+  font-weight: bold;
+}
+
+.author a:hover {
+  opacity: 100%;
 }
