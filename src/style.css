@@ -133,6 +133,10 @@ h1 {
   transition: 500ms ease-in-out;
 }
 
+.active {
+    opacity: 100% !important;    
+}
+
 .precipitation-today,
 .wind-today,
 .pressure-today {
