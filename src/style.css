@@ -1,0 +1,171 @@
+body {
+  font-family: "Noto Sans", sans-serif;
+  margin: 50px;
+}
+
+h1 {
+  font-size: 42px;
+  color: #006ec5;
+  margin-bottom: 10px;
+  margin-top: 35px;
+  font-weight: bold;
+}
+
+.previously-search {
+  font-size: 14px;
+  margin: 50px 0px 40px;
+}
+
+.previously-cities {
+  display: inline;
+  padding-right: 25px;
+  color: #006ec5;
+  font-weight: bold;
+}
+
+.previously-city {
+  padding-right: 25px;
+  color: #006ec5;
+  opacity: 50%;
+  text-decoration: none;
+  transition: 500ms ease-in-out;
+}
+
+.previously-city:hover {
+  opacity: 100%;
+}
+
+.search-a-city {
+  border: 2px solid #5a6275;
+  font-size: 14px;
+  height: 40px;
+  width: 250px;
+  transition: 500ms ease-in-out;
+}
+
+.search-a-city:hover {
+  border: 2px solid #006ec5;
+}
+
+.go,
+.current {
+  margin-left: 20px;
+  height: 40px;
+  width: 150px;
+  border: 2px solid;
+  border-radius: 15px;
+  transition: 500ms ease-in-out;
+}
+
+.go {
+  color: white;
+  background-color: #006ec5;
+  border-color: #006ec5;
+}
+
+.go:hover {
+  border-color: #5a6275;
+  background-color: white;
+  color: #006ec5;
+}
+
+.current {
+  border-color: #5a6275;
+  background-color: white;
+  color: #006ec5;
+}
+
+.current:hover {
+  color: white;
+  background-color: #006ec5;
+  border-color: #006ec5;
+}
+
+.today {
+  color: #5a6275;
+  font-size: 18px;
+}
+
+.date-today,
+.time {
+  display: inline;
+  padding-right: 25px;
+}
+
+.container {
+  margin-left: 0px;
+}
+
+.row {
+  align-items: center;
+}
+
+.col {
+  padding: 10px 20px;
+}
+
+.image-weather-today {
+  width: 60px;
+}
+
+.temperature-today {
+  color: #006ec5;
+  font-size: 100px;
+  font-weight: bold;
+}
+
+.celsius-fahrenheit {
+  font-size: 50px;
+  color: #5a6275;
+  vertical-align: middle;
+}
+
+.celsius-fahrenheit a {
+  text-decoration: none;
+  color: #006ec5;
+  opacity: 50%;
+}
+
+.celsius-fahrenheit a:hover {
+  opacity: 100%;
+}
+
+.precipitation-today,
+.wind-today,
+.pressure-today {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+div .col hr {
+  opacity: 20%;
+  margin: 5px;
+}
+
+.table {
+  width: 500px;
+}
+
+tr {
+  vertical-align: middle;
+}
+
+.weekday,
+.description-weather-weekday {
+  font-size: 18px;
+}
+
+.temperature-weekday {
+  font-size: 20px;
+  font-weight: bold;
+  color: #006ec5;
+}
+
+.temperature-weekday sup {
+  font-size: 12px;
+  color: #5a6275;
+}
+
+.image-weather-weekday {
+  width: 40px;
+}
