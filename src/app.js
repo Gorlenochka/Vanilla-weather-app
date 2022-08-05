@@ -11,6 +11,12 @@ function showTemp(response) {
   let windSpeed = Math.round(response.data.wind.speed);
   let windSpeedToday = document.querySelector("#wind-speed-today");
   windSpeedToday.innerHTML = `${windSpeed}`;
+    let icon = document.querySelector("#image-weather-today");
+    icon.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+    icon.setAttribute("alt", response.data.weather[0].description);
 }
 
 let city = "Kyiv";
@@ -46,11 +52,20 @@ if (dataToday < "10") {
   dataToday = `0${dataToday}`;
 }
 
-let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 let dayToday = days[dateToday.getDay()];
 
 let today = document.querySelector("#date-today");
-today.innerHTML = dayToday + " " + dataToday + "." + monthToday + "." + yearToday;
+today.innerHTML =
+  dayToday + " " + dataToday + "." + monthToday + "." + yearToday;
 
 let hour = dateToday.getHours();
 if (hour < "10") {
