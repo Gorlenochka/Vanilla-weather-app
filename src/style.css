@@ -162,13 +162,22 @@ tr {
   font-size: 18px;
 }
 
-.temperature-weekday {
+.temperature-weekday-max, .temperature-weekday-min {
   font-size: 20px;
   font-weight: bold;
   color: #006ec5;
 }
 
-.temperature-weekday sup {
+.temperature-weekday-min {
+  color: #80B7E2;
+  font-size: 18px;  
+}
+
+.temperature-weekday-min:hover {
+  color: #b0b9cc !important;
+}
+
+.temperature-weekday-max sup, .temperature-weekday-min sup {
   font-size: 12px;
   color: #5a6275;
 }
