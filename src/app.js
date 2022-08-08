@@ -53,32 +53,68 @@ currentTime.innerHTML = hour + "." + min;
 
 // forecast table
 
-function displayForecast() {
+function formatweekDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  
+  return days[day];
+}
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let data = date.getDate();
+  if (data < "10") {
+    data = `0${data}`;
+  }
+  let year = date.getFullYear();
+  let month = months[date.getMonth()];
+  let weekdaydata = data + "." + month + "." + year;
+  return weekdaydata;
+}
+
+function displayForecast(response) {
+  let forecastDays = response.data.daily;
   let forecast = document.querySelector("#forecast");
   let forecastHTML = "";
-  days.forEach(function (day) {
-    forecastHTML = forecastHTML + `
+
+  forecastDays.forEach(function (forecastDay, index) {
+
+    if (index < 7) {
+      let forecastDayTempMax = Math.round(forecastDay.temp.max);
+      let forecastDayTempMin = Math.round(forecastDay.temp.min);
+      forecastHTML =
+        forecastHTML +
+        `
 <tr>
-          <th scope="row" class="weekday">${day} 11</th>
-          <td class="temperature-weekday-max">25 <sup>°С</sup></td>
-          <td class="temperature-weekday-min">15 <sup>°С</sup></td>
+          <th scope="row" class="weekday">${formatweekDay(forecastDay.dt)}</th>
+          <td class="weekday-date">${formatDay(forecastDay.dt)}</td>
+          <td class="temperature-weekday-max">${forecastDayTempMax}<sup>°С</sup></td>
+          <td class="temperature-weekday-min">${forecastDayTempMin}<sup>°С</sup></td>
           <td>
             <img
-              src="http://openweathermap.org/img/wn/10d@2x.png"
-              alt="showers"
+              src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon
+        }@2x.png"
+              alt="${forecastDay.weather[0].description}"
               class="image-weather-weekday"
             />
           </td>
-          <td class="description-weather-weekday">Showers</td>
-        </tr>`
+          <td class="description-weather-weekday">${forecastDay.weather[0].description
+        }</td>
+        </tr>`;
+    }
   });
 
   forecast.innerHTML = forecastHTML;
   console.log(forecastHTML);
-}
+} 
 
 // Search
+
+function getForecast(coordinates) {
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function showTemp(response) {
   let temperature = Math.round(response.data.main.temp);
@@ -100,6 +136,8 @@ function showTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function search(event) {
@@ -141,4 +179,3 @@ clickCelsius.addEventListener("click", celsius);
 let searchForm = document.querySelector("#go");
 searchForm.addEventListener("click", search);
 let temperatureCelsius = null;
-displayForecast();

@@ -182,6 +182,10 @@ tr {
   color: #5a6275;
 }
 
+.description-weather-weekday:first-letter {
+  text-transform: capitalize;
+}
+
 .image-weather-weekday {
   width: 40px;
 }
