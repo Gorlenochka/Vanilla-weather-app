@@ -40,7 +40,7 @@ h1 {
   border-radius: 5px;
   font-size: 14px;
   height: 40px;
-  width: 200px;
+  width: 300px;
   transition: 500ms ease-in-out;
 }
 
@@ -50,7 +50,7 @@ h1 {
 
 .go,
 .current {
-  margin-left: 20px;
+  margin-left: 40px;
   height: 40px;
   width: 150px;
   border: 2px solid;
@@ -95,19 +95,20 @@ h1 {
 
 .container {
   margin-left: 0px;
-}
-
-.row {
-  align-items: center;
+  width: 700px;
 }
 
 .col {
   padding: 10px 20px;
 }
 
+.image-me {
+  color: #006ec5 !important;
+}
+
 .image-weather-today {
   width: 100px;
-  
+  align-items: center;
 }
 
 .temperature-today {
@@ -150,16 +151,19 @@ div .col hr {
 }
 
 .table {
-  width: 590px;
+  width: 700px;
 }
 
 tr {
   vertical-align: middle;
 }
 
-.weekday,
-.description-weather-weekday {
+.weekday {
   font-size: 18px;
+}
+
+.description-weather-weekday {
+  font-size: 14px;
 }
 
 .temperature-weekday-max, .temperature-weekday-min {
