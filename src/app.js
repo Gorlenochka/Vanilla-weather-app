@@ -51,6 +51,33 @@ if (min < "10") {
 let currentTime = document.querySelector("#time");
 currentTime.innerHTML = hour + "." + min;
 
+// forecast table
+
+function displayForecast() {
+
+  let forecast = document.querySelector("#forecast");
+  let forecastHTML = "";
+  days.forEach(function (day) {
+    forecastHTML = forecastHTML + `
+<tr>
+          <th scope="row" class="weekday">${day} 11</th>
+          <td class="temperature-weekday-max">25 <sup>°С</sup></td>
+          <td class="temperature-weekday-min">15 <sup>°С</sup></td>
+          <td>
+            <img
+              src="http://openweathermap.org/img/wn/10d@2x.png"
+              alt="showers"
+              class="image-weather-weekday"
+            />
+          </td>
+          <td class="description-weather-weekday">Showers</td>
+        </tr>`
+  });
+
+  forecast.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 // Search
 
 function showTemp(response) {
@@ -114,3 +141,4 @@ clickCelsius.addEventListener("click", celsius);
 let searchForm = document.querySelector("#go");
 searchForm.addEventListener("click", search);
 let temperatureCelsius = null;
+displayForecast();
