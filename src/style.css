@@ -50,7 +50,7 @@ h1 {
 
 .go,
 .current {
-  margin-left: 40px;
+  margin-left: 30px;
   height: 40px;
   width: 150px;
   border: 2px solid;
@@ -102,13 +102,8 @@ h1 {
   padding: 10px 20px;
 }
 
-.image-me {
-  color: #006ec5 !important;
-}
-
 .image-weather-today {
   width: 100px;
-  align-items: center;
 }
 
 .temperature-today {
@@ -135,7 +130,7 @@ h1 {
 }
 
 .active {
-    opacity: 100% !important;    
+  opacity: 100% !important;
 }
 
 .precipitation-today,
@@ -166,22 +161,20 @@ tr {
   font-size: 14px;
 }
 
-.temperature-weekday-max, .temperature-weekday-min {
+.temperature-weekday-max,
+.temperature-weekday-min {
   font-size: 20px;
   font-weight: bold;
   color: #006ec5;
 }
 
 .temperature-weekday-min {
-  color: #80B7E2;
-  font-size: 18px;  
+  color: #80b7e2;
+  font-size: 18px;
 }
 
-.temperature-weekday-min:hover {
-  color: #b0b9cc !important;
-}
-
-.temperature-weekday-max sup, .temperature-weekday-min sup {
+.temperature-weekday-max sup,
+.temperature-weekday-min sup {
   font-size: 12px;
   color: #5a6275;
 }

@@ -56,7 +56,7 @@ currentTime.innerHTML = hour + "." + min;
 function formatweekDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  
+
   return days[day];
 }
 
@@ -78,7 +78,6 @@ function displayForecast(response) {
   let forecastHTML = "";
 
   forecastDays.forEach(function (forecastDay, index) {
-
     if (index < 7) {
       let forecastDayTempMax = Math.round(forecastDay.temp.max);
       let forecastDayTempMin = Math.round(forecastDay.temp.min);
@@ -92,21 +91,23 @@ function displayForecast(response) {
           <td class="temperature-weekday-min">${forecastDayTempMin}<sup>°С</sup></td>
           <td>
             <img
-              src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon
-        }@2x.png"
+              src="http://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png"
               alt="${forecastDay.weather[0].description}"
               class="image-weather-weekday"
             />
           </td>
-          <td class="description-weather-weekday">${forecastDay.weather[0].description
-        }</td>
+          <td class="description-weather-weekday">${
+            forecastDay.weather[0].description
+          }</td>
         </tr>`;
     }
   });
 
   forecast.innerHTML = forecastHTML;
   console.log(forecastHTML);
-} 
+}
 
 // Search
 
@@ -121,6 +122,8 @@ function showTemp(response) {
   let temperatureToday = document.querySelector("#temperature");
   temperatureToday.innerHTML = `${temperature}`;
   temperatureCelsius = Math.round(response.data.main.temp);
+  let searchCity = document.querySelector("#search-city");
+  searchCity.innerHTML =response.data.name;
   let precipitation = response.data.main.humidity;
   let precipitationToday = document.querySelector("#precipitation-today");
   precipitationToday.innerHTML = `${precipitation}`;
@@ -140,18 +143,21 @@ function showTemp(response) {
   getForecast(response.data.coord);
 }
 
-function search(event) {
-  event.preventDefault();
-  let searchInputValue = document.querySelector("#search-a-city");
-  let searchCity = document.querySelector("#search-city");
-  searchCity.innerHTML = `${searchInputValue.value}`;
-  let city = `${searchInputValue.value}`;
+function search(city) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
 }
 
-// Celsius-Fahrenheit
+function searchClick(event) {
+  event.preventDefault();
+  let searchInputValue = document.querySelector("#search-a-city");
+  search(searchInputValue.value);
+}
+
+
+
+/* Celsius-Fahrenheit
 
 function fahrenheit(event) {
   event.preventDefault();
@@ -160,7 +166,7 @@ function fahrenheit(event) {
   let temperatureToday = document.querySelector("#temperature");
   let temperatureFahrenheit = (temperatureCelsius * 9) / 5 + 32;
   temperatureToday.innerHTML = Math.round(temperatureFahrenheit);
-}
+ }
 
 let clickFahrenheit = document.querySelector("#fahrenheit");
 clickFahrenheit.addEventListener("click", fahrenheit);
@@ -175,7 +181,31 @@ function celsius(event) {
 
 let clickCelsius = document.querySelector("#celsius");
 clickCelsius.addEventListener("click", celsius);
+let temperatureCelsius = null;
+*/
 
 let searchForm = document.querySelector("#go");
-searchForm.addEventListener("click", search);
-let temperatureCelsius = null;
+searchForm.addEventListener("click", searchClick);
+
+search("Sumy");
+
+// Current Position
+
+function showPosition(position) {
+  let currentPosition = position.data.city;
+  let currentCity = document.querySelector("#search-city");
+  currentCity.innerHTML = `${currentPosition}`;
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentPosition}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemp);
+}
+
+function current(event) {
+  event.preventDefault();
+  let apiKeyPosition = "d802faa0-10bd-11ec-b2fe-47a0872c6708";
+  let apiUrlPosition = `https://geolocation-db.com/json/${apiKeyPosition}`;
+  axios.get(apiUrlPosition).then(showPosition);
+}
+
+let currentForm = document.querySelector("#current");
+currentForm.addEventListener("click", current);
