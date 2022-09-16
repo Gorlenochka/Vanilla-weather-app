@@ -112,7 +112,7 @@ function displayForecast(response) {
 // Search
 
 function getForecast(coordinates) {
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiKey = "4988ef9330d1f4546a10355cfd9c0b6f";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(displayForecast);
 }
@@ -123,7 +123,7 @@ function showTemp(response) {
   temperatureToday.innerHTML = `${temperature}`;
   temperatureCelsius = Math.round(response.data.main.temp);
   let searchCity = document.querySelector("#search-city");
-  searchCity.innerHTML =response.data.name;
+  searchCity.innerHTML = response.data.name;
   let precipitation = response.data.main.humidity;
   let precipitationToday = document.querySelector("#precipitation-today");
   precipitationToday.innerHTML = `${precipitation}`;
@@ -144,7 +144,7 @@ function showTemp(response) {
 }
 
 function search(city) {
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiKey = "4988ef9330d1f4546a10355cfd9c0b6f";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
 }
@@ -154,8 +154,6 @@ function searchClick(event) {
   let searchInputValue = document.querySelector("#search-a-city");
   search(searchInputValue.value);
 }
-
-
 
 /* Celsius-Fahrenheit
 
@@ -195,7 +193,7 @@ function showPosition(position) {
   let currentPosition = position.data.city;
   let currentCity = document.querySelector("#search-city");
   currentCity.innerHTML = `${currentPosition}`;
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiKey = "4988ef9330d1f4546a10355cfd9c0b6f";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentPosition}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
 }
